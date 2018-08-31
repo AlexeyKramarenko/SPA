@@ -1,9 +1,11 @@
+
 var express = require('express');
 var router = express.Router();
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+router.get('/api/articles/fetchCategories', function(req, res, next) {
+
+  const testData = [{ id: 1, title: "one" }, { id: 2, title: "two" }];
+	res.json(testData);
 });
 
 module.exports = router;
