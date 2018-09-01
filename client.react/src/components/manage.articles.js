@@ -1,32 +1,32 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { fetchCategories, deleteCategory } from '../actions/articles';
+import { fetchArticles, deleteArticle } from '../actions/articles';
 import { connect } from 'react-redux';
 
-class ManageCategories extends React.Component {
+class ManageArticles extends React.Component {
 
     componentDidMount() {
-        this.props.fetchCategories();
+        this.props.fetchArticles();
     }
 
-    render() {
-  
+    render() {  
         return (
             <table className="list">
                 <tbody>
                 {
-                   this.props.categories.map(function (item, i) {
+                   this.props.articles.map(function (item, i) {
                       return <tr key={i}>
                             <td>
                                 <b>{item.title}</b>
                                 <br />
-                                {item.description}
+                                <b>Posted by:</b>{item.addedBy}<br />
+                                <b>Abstract:</b>{item.abstract}<br />
                             </td>
                             <td>
-                                <Link to={`/manage_categories/${item.id}`}>Manage Articles</Link>
+                                <Link to={`/manage_articles/${item.id}`}>Manage Articles</Link>
                             </td>
                             <td>
-                                <a onClick={() => this.props.deleteCategory(item.id)}>Delete</a>
+                                <a onClick={() => this.props.deleteArticle(item.id)}>Delete</a>
                             </td>  
                         </tr>
                     })
@@ -39,8 +39,8 @@ class ManageCategories extends React.Component {
 
 function mapStateToProps(state) {    
     return {
-        categories : state.articlesReducer
+        articles : state.articlesReducer
     }
 }
 
-export default connect(mapStateToProps, { fetchCategories, deleteCategory })(ManageCategories);
+export default connect(mapStateToProps, { fetchArticles, deleteArticle })(ManageArticles);

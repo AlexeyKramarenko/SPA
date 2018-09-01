@@ -4,6 +4,7 @@ export const SET_ARTICLES = "SET_ARTICLES";
 export const SET_ARTICLE = "SET_ARTICLE";
 export const ADD_COMMENT = "ADD_COMMENT";
 export const CATEGORY_DELETED = "CATEGORY_DELETED";
+export const ARTICLE_DELETED = "ARTICLE_DELETED";
 
 export function setCategories(categories) {   
     
@@ -42,6 +43,14 @@ export function categoryDeleted(categoryId){
     return {
         type : CATEGORY_DELETED,
         categoryId
+    }    
+}
+
+export function articleDeleted(articleId){
+
+    return {
+        type : ARTICLE_DELETED,
+        articleId
     }    
 }
 
@@ -108,5 +117,19 @@ export function deleteCategory(id) {
         })
         .then(handleResponse)
         .then(data => dispatch(categoryDeleted(id))); 
+    }
+} 
+
+export function deleteArticle(id) {
+    
+    return dispatch =>{
+        return fetch(`/api/articles/deleteArticle/${id}`, {
+            method: 'delete',            
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+        .then(handleResponse)
+        .then(data => dispatch(articleDeleted(id))); 
     }
 } 

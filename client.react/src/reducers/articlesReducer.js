@@ -1,6 +1,6 @@
 
 
-import { SET_CATEGORIES, SET_ARTICLES, SET_ARTICLE, ADD_COMMENT, CATEGORY_DELETED } from '../actions/articles';
+import { SET_CATEGORIES, SET_ARTICLES, SET_ARTICLE, ADD_COMMENT, CATEGORY_DELETED, ARTICLE_DELETED } from '../actions/articles';
 
 export default function articlesReducer(state = [], action = {}){
     
@@ -20,6 +20,9 @@ export default function articlesReducer(state = [], action = {}){
  
         case CATEGORY_DELETED: 
             return state.filter(item => item.id !== action.categoryId);
+ 
+        case ARTICLE_DELETED: 
+            return state.filter(item => item.id !== action.articleId);
  
         default:
             return state;

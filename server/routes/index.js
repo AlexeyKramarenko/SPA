@@ -57,4 +57,9 @@ router.delete('/api/articles/deleteCategory/:id', function(req, res) {
   res.json({ id : req.params.id });  
 });
 
+router.delete('/api/articles/deleteArticle/:id', function(req, res) {
+  
+  res.json({ id : req.params.id });  
+});
+
 module.exports = router;
