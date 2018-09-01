@@ -26,11 +26,10 @@ class CategoriesPage extends React.Component {
 }
 
 
-function mapStateToProps(state){
-    
+function mapStateToProps(state) {    
     return {
         categories : state.articlesReducer
     }
 }
 
-export default connect(mapStateToProps, {fetchCategories} )(CategoriesPage); 
+export default connect(mapStateToProps, { fetchCategories } )(CategoriesPage); 

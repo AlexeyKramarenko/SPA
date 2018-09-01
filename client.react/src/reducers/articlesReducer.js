@@ -1,6 +1,6 @@
 
 
-import { SET_CATEGORIES } from '../actions/articles';
+import { SET_CATEGORIES, SET_ARTICLES, SET_ARTICLE, ADD_COMMENT } from '../actions/articles';
 
 export default function articlesReducer(state = [], action = {}){
     
@@ -8,6 +8,15 @@ export default function articlesReducer(state = [], action = {}){
 
         case SET_CATEGORIES: 
             return action.categories;
+        
+        case SET_ARTICLES: 
+            return action.articles;
+
+        case SET_ARTICLE: 
+            return action.article;
+
+        case ADD_COMMENT: 
+            return [ ...state, action.comment ];
 
         default:
             return state;

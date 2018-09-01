@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './categories.list.css';
 
 const CategoriesList = ({ categories }) => {
 
@@ -13,7 +12,7 @@ const CategoriesList = ({ categories }) => {
         {
             categories.map((item) =>                
                     <div className="category-item" key = {item.id}>
-                        <Link to={`/articles_page/${item.id}`}>{item.title}</Link> 
+                        <Link to={`/categories/${item.id}`}>{item.title}</Link> 
                         <br /><p> Description</p>
                     </div>)
         }
