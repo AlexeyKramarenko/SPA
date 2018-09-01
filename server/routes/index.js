@@ -4,7 +4,7 @@ var router = express.Router();
 
 router.get('/api/articles/fetchCategories', function(req, res, next) {
 
-  const testData = [{ id: 1, title: "one" }, { id: 2, title: "two" }];
+  const testData = [{ id: 1, title: "one", description: "Some description...(1)" }, { id: 2, title: "two", description: "Some description...(2)" }];
 	res.json(testData);
 });
 
@@ -50,6 +50,11 @@ router.post('/api/articles/saveComment', function(req, res){
   } else {
       res.status(404).json({ errors });
   }
+});
+
+router.delete('/api/articles/deleteCategory/:id', function(req, res) {
+  
+  res.json({ id : req.params.id });  
 });
 
 module.exports = router;

@@ -13,7 +13,7 @@ const CategoriesList = ({ categories }) => {
             categories.map((item) =>                
                     <div className="category-item" key = {item.id}>
                         <Link to={`/categories/${item.id}`}>{item.title}</Link> 
-                        <br /><p> Description</p>
+                        <br /><p> {item.description}</p>
                     </div>)
         }
         </div>

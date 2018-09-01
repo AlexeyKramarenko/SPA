@@ -7,6 +7,7 @@ import {  Switch, Route } from 'react-router-dom';
 import CategoriesPage from './components/categories.page'; //'./public/articles/show.categories/show.categories.component.jsx';
 import ArticlesPage from './components/articles.page';
 import ArticleInfo from './components/article.info';
+import ManageCategories from './components/manage.categories';
 
 class App extends Component {
 
@@ -110,8 +111,9 @@ class App extends Component {
                 <Switch>
                   <Route exact path="/" component = {CategoriesPage} />
                   <Route exact path="/categories" component = {CategoriesPage} /> 
-                  <Route path="/categories/:id" component = {ArticlesPage} /> 
+                  <Route path="/categories/:id" component = {ArticlesPage} />                   
                   <Route path="/articles/:id" component = {ArticleInfo} /> 
+                  <Route path="/manage_categories" component = {ManageCategories} />
                 </Switch>
 
               </div>
