@@ -6,13 +6,13 @@ export default function articlesReducer(state = [], action = {}){
     switch(action.type){
  
         case SET_ARTICLES: 
-            return { ...state, articles: action.articles };
+            return { ...state, articles: action.payload };
 
         case SET_ARTICLE:  
-            return { ...state, article: action.article };
+            return { ...state, article: action.payload };
  
         case ARTICLE_DELETED: 
-            return { ...state, articles: state.articles.filter(item => item.id !== action.articleId) };
+            return { ...state, articles: state.articles.filter(item => item.id !== action.payload) };
  
         default:
             return state;        

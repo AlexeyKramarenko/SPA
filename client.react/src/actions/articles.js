@@ -9,7 +9,7 @@ export function setArticles(articles) {
     
     return {
         type: SET_ARTICLES,
-        articles
+        payload: articles
     }
 }
 
@@ -17,7 +17,7 @@ export function setArticle(article) {
     
     return {
         type: SET_ARTICLE,
-        article
+        payload: article
     }
 }
   
@@ -25,7 +25,7 @@ export function articleDeleted(articleId){
 
     return {
         type : ARTICLE_DELETED,
-        articleId
+        payload: articleId
     }    
 }
  

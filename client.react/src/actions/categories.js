@@ -7,7 +7,7 @@ export function setCategories(categories) {
     
     return {
         type: SET_CATEGORIES,
-        categories
+        payload: categories
     }
 }
  
@@ -15,7 +15,7 @@ export function categoryDeleted(categoryId){
 
     return {
         type : CATEGORY_DELETED,
-        categoryId
+        payload: categoryId
     }    
 }
  
