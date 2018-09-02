@@ -1,12 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { fetchArticle, saveComment } from  '../actions/articles';
-import {Redirect} from 'react-router-dom';
+import { fetchArticle } from  '../actions/articles';
+import { saveComment } from  '../actions/comments';
+import { Redirect } from 'react-router-dom';
 
 class ArticleInfo extends React.Component {
         
-    state = { 
-        articleId: this.props.article.id,
+    state = {         
+        articleId: this.props.article ? this.props.article.id : null,
         name: '',
         email: '',
         body: '',
@@ -14,9 +15,9 @@ class ArticleInfo extends React.Component {
         done: false 
     }
 
-    componentDidMount() {
+    componentDidMount() {       
         const articleId = this.props.match.params.id; 
-        this.props.fetchArticle(articleId);        
+        this.props.fetchArticle(articleId);     
     }
 
     handleChange = (e) => {
@@ -72,8 +73,8 @@ class ArticleInfo extends React.Component {
         }    
     }
 
-    render() {
-        return (
+    render() { 
+        return (  
             <div id="order-summary">
                 <h3>{this.props.article.title}</h3>
                 <p>{this.props.article.body}</p>               
@@ -107,9 +108,11 @@ class ArticleInfo extends React.Component {
 }
 
 
-function mapStateToProps(state) {
+function mapStateToProps(state) {  
     return {
-        article : state.articlesReducer
+        article : state.articlesReducer.article ?
+                  state.articlesReducer.article :
+                  {}
     }
 }
 

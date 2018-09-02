@@ -35,7 +35,9 @@ class ArticlesPage extends React.Component {
  
 function mapStateToProps(state) {
     return {
-        articles : state.articlesReducer
+        articles : state.articlesReducer.articles ?
+                   state.articlesReducer.articles :
+                   []
     }
 }
 

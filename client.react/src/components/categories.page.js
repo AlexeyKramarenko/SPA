@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import './categories.page.css';
-import { fetchCategories } from  '../actions/articles';
+import { fetchCategories } from  '../actions/categories';
 import CategoriesList from './categories.list';
 
 class CategoriesPage extends React.Component {
@@ -26,9 +26,12 @@ class CategoriesPage extends React.Component {
 }
 
 
-function mapStateToProps(state) {    
+function mapStateToProps(state) {  
+    
     return {
-        categories : state.articlesReducer
+        categories : state.categoriesReducer.categories ?
+                     state.categoriesReducer.categories :
+                     []
     }
 }
 
