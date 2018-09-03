@@ -96,37 +96,42 @@ class CategoryForm extends React.Component {
         const redirect = <Redirect to={`/manage_categories`} />
 
         const form = (
-            <form onSubmit={this.handleSubmit} >                
+            <form onSubmit={this.handleSubmit} >
+
+                <div className="text-danger">{this.state.errors.title}</div>
                 <div className="form-group">
                     <label className="control-label">Title</label>
                     <input name="title" 
                            type="text" 
                            className="form-control" 
                            value={this.state.title} 
-                           onChange={this.handleChange}  />
-                    <span>{this.state.errors.title}</span>
+                           onChange={this.handleChange}  />  
                 </div>
+
+                <div className="text-danger">{this.state.errors.importance}</div>
                 <div className="form-group">
                     <label className="control-label">Importance</label>
                     <input name="importance" 
                            type="text" 
                            className="form-control" 
                            value={this.state.importance} 
-                           onChange={this.handleChange} />
-                    <span>{this.state.errors.importance}</span>
+                           onChange={this.handleChange} />  
                 </div>
+
+                <div className="text-danger">{this.state.errors.description}</div>
                 <div className="form-group">
                     <label className="control-label">Description</label>
                     <input name="description" 
                            type="text" 
                            className="form-control" 
                            value={this.state.description} 
-                           onChange={this.handleChange} />
-                    <span>{this.state.errors.description}</span>
+                           onChange={this.handleChange} /> 
                 </div> 
+
                 <div className="form-group">
                     <input type="submit" value="Save" className="btn btn-default" />
                 </div>
+
             </form>
         );
         

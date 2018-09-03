@@ -11,8 +11,9 @@ class ArticleInfo extends React.Component {
         name: '',
         email: '',
         body: '',
+
         errors: {},
-        done: false 
+        redirect: false 
     }
 
     componentDidMount() {       
@@ -67,40 +68,46 @@ class ArticleInfo extends React.Component {
 
           this.props.saveComment({ name, email, body, articleId })
           .then(
-            () =>{ this.setState({ done:true })},
-            (err) => err.response.json().then(({errors}) => this.setState({ errors, loading: false }))
+            () =>{ this.setState({ redirect : true })},
+            (err) => err.response.json().then(({errors}) => this.setState({ errors }))
           );    
         }    
     }
 
     render() { 
-        return (  
+
+        const redirect = <Redirect to={`/categories`} />
+
+        const form = (  
             <div id="order-summary">
                 <h3>{this.props.article.title}</h3>
                 <p>{this.props.article.body}</p>               
                 <br />
                 <h3>Post your comment</h3> 
                  
-                <form onSubmit={this.handleSubmit}>
-                    <div className="text-danger"></div>
+                <form onSubmit = { this.handleSubmit }>
+
+                    <div className="text-danger">{this.state.errors.name}</div>
                     <div className="form-group">
                         <label className="control-label">Name:</label> 
                         <input name="name" 
                                type="text" 
                                value={this.state.name} 
                                className="form-control" 
-                               onChange={this.handleChange} />
-                        <span>{this.state.errors.name}</span>
+                               onChange={this.handleChange} /> 
                     </div>
+
+                    <div className="text-danger">{this.state.errors.email}</div>
                     <div className="form-group">
                         <label className="control-label">Email:</label>
                         <input name="email" 
                                type="text" 
                                value={this.state.email}  
                                className="form-control" 
-                               onChange={this.handleChange} />
-                        <span>{this.state.errors.email}</span>
+                               onChange={this.handleChange} /> 
                     </div>
+
+                    <div className="text-danger">{this.state.errors.body}</div>
                     <div className="form-group">
                         <label className="control-label">Body:</label>
                         <input name="body" 
@@ -108,14 +115,17 @@ class ArticleInfo extends React.Component {
                                value={this.state.body}  
                                className="form-control" 
                                onChange={this.handleChange} />
-                        <span>{this.state.errors.body}</span>
                     </div>
+
                     <div className="form-group">
                         <input type="submit" value="Create" className="btn btn-default" />
                     </div>
+
                 </form>
             </div>
-        )
+        );
+
+        return this.state.redirect ? redirect : form; 
     }
 }
 
