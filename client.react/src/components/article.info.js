@@ -85,17 +85,29 @@ class ArticleInfo extends React.Component {
                     <div className="text-danger"></div>
                     <div className="form-group">
                         <label className="control-label">Name:</label> 
-                        <input name="name" type="text" value={this.state.name} className="form-control" onChange={this.handleChange} />
+                        <input name="name" 
+                               type="text" 
+                               value={this.state.name} 
+                               className="form-control" 
+                               onChange={this.handleChange} />
                         <span>{this.state.errors.name}</span>
                     </div>
                     <div className="form-group">
                         <label className="control-label">Email:</label>
-                        <input name="email" type="text" value={this.state.email}  className="form-control" onChange={this.handleChange} />
+                        <input name="email" 
+                               type="text" 
+                               value={this.state.email}  
+                               className="form-control" 
+                               onChange={this.handleChange} />
                         <span>{this.state.errors.email}</span>
                     </div>
                     <div className="form-group">
                         <label className="control-label">Body:</label>
-                        <input name="body" type="text" value={this.state.body}  className="form-control" onChange={this.handleChange} />
+                        <input name="body" 
+                               type="text" 
+                               value={this.state.body}  
+                               className="form-control" 
+                               onChange={this.handleChange} />
                         <span>{this.state.errors.body}</span>
                     </div>
                     <div className="form-group">

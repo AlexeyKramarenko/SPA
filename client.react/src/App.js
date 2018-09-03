@@ -9,6 +9,7 @@ import ArticlesPage from './components/articles.page';
 import ArticleInfo from './components/article.info';
 import ManageCategories from './components/manage.categories';
 import ManageArticles from './components/manage.articles';
+import CategoryForm from './components/category.form';
 
 class App extends Component {
 
@@ -115,7 +116,9 @@ class App extends Component {
                   <Route path="/categories/:id" component = {ArticlesPage} />                   
                   <Route path="/articles/:id" component = {ArticleInfo} /> 
                   <Route exact path="/manage_categories" component = {ManageCategories} />
-                  <Route path="/manage_categories/:id" component = {ManageArticles} />
+                  <Route path="/manage_categories/:id" component = {ManageArticles} />                  
+                  <Route path="/category_form/:id" component = {CategoryForm} />
+                  <Route path="/category_form" component = {CategoryForm} />
                 </Switch>
 
               </div>

@@ -23,8 +23,10 @@ router.get('/api/articles/fetchArticle/:id', function(req, res, next) {
   res.json(testData);
 });
 
-function validate(data){
-    
+router.post('/api/articles/saveComment', function(req, res){
+
+  const data = req.body;
+
   let errors = {};
   
   if(data.name === '')
@@ -34,14 +36,7 @@ function validate(data){
   if(data.body === '')
       errors.body = "Body can't be empty";
 
-  const isValid = Object.keys(errors).length === 0;
-  return { errors, isValid };
-}
-
-router.post('/api/articles/saveComment', function(req, res){
-
-  const { errors, isValid } = validate(req.body);
-
+  const isValid = Object.keys(errors).length === 0; 
   if(isValid){
       const { name, email, body, articleId } = req.body;
       //Save to db here...
@@ -60,6 +55,65 @@ router.delete('/api/articles/deleteCategory/:id', function(req, res) {
 router.delete('/api/articles/deleteArticle/:id', function(req, res) {
   
   res.json({ id : req.params.id });  
+});
+  
+router.put('/api/articles/updateCategory/:id', function(req, res){
+  
+  const id = req.params.id;
+  const data = req.body;
+
+  let errors = {};
+  
+  if(data.title === '')
+      errors.title = "Title can't be empty";
+
+  if(data.importance === '')
+      errors.importance = "Importance can't be empty";
+
+  if(data.description === '')
+      errors.description = "Description can't be empty";
+
+  const isValid = Object.keys(errors).length === 0; 
+  if(isValid){
+      const { title, importance, description } = req.body;
+      //Save to db here...
+      //Then successful response:
+      res.json({ category : req.body });
+  } else {
+      res.status(404).json({ errors });
+  }
+});
+
+router.post('/api/articles/saveCategory', function(req, res){
+    
+  const data = req.body;
+  let errors = {};
+  
+  if(data.title === '')
+      errors.title = "Title can't be empty";
+
+  if(data.importance === '')
+      errors.importance = "Importance can't be empty";
+
+  if(data.description === '')
+      errors.description = "Description can't be empty";
+
+  const isValid = Object.keys(errors).length === 0; 
+  if(isValid){
+      const { title, importance, description } = data;
+      //Save to db here...
+      //Then successful response:
+      res.json({ category: { title, importance, description } });
+  } else {
+      res.status(404).json({ errors });
+  }
+});
+
+
+router.get('/api/articles/fetchCategory/:id', function(req, res, next) {
+  
+  const testData = { id: 1, title: "ahahah", description: "asdfffffffffffgbczmx xzcxc hjdksfsd sd", importance: 4 };     
+  res.json(testData);
 });
 
 module.exports = router;
