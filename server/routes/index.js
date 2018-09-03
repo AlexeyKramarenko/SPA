@@ -109,6 +109,70 @@ router.post('/api/articles/saveCategory', function(req, res){
   }
 });
 
+  
+router.put('/api/articles/updateArticle/:id', function(req, res){
+  
+    const id = req.params.id;
+    const data = req.body;
+  
+    let errors = {};
+    
+    if(data.title === '')
+        errors.title = "Title can't be empty";
+  
+    if(data.abstract === '')
+        errors.abstract = "Abstract can't be empty";
+  
+    if(data.body === '')
+        errors.body = "Body can't be empty";
+  
+    if(data.city === '')
+        errors.city = "City can't be empty";
+  
+    if(data.country === '')
+        errors.country = "Country can't be empty";
+  
+    const isValid = Object.keys(errors).length === 0; 
+    if(isValid){
+        const { title, importance, description } = req.body;
+        //Save to db here...
+        //Then successful response:
+        res.json({ article : req.body });
+    } else {
+        res.status(404).json({ errors });
+    }
+});
+  
+  router.post('/api/articles/saveArticle', function(req, res){
+      
+    const data = req.body;
+    let errors = {};
+    
+    if(data.title === '')
+        errors.title = "Title can't be empty";
+  
+    if(data.abstract === '')
+        errors.abstract = "Abstract can't be empty";
+  
+    if(data.body === '')
+        errors.body = "Body can't be empty";
+  
+    if(data.city === '')
+        errors.city = "City can't be empty";
+  
+    if(data.country === '')
+        errors.country = "Country can't be empty";
+  
+    const isValid = Object.keys(errors).length === 0; 
+    if(isValid){
+        const { title, abstract, body, city, country } = data;
+        //Save to db here...
+        //Then successful response:
+        res.json({ article: req.body });
+    } else {
+        res.status(404).json({ errors });
+    }
+});
 
 router.get('/api/articles/fetchCategory/:id', function(req, res, next) {
   

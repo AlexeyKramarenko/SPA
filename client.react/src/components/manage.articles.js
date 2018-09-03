@@ -23,7 +23,7 @@ class ManageArticles extends React.Component {
                                 <b>Abstract:</b>{item.abstract}<br />
                             </td>
                             <td>
-                                <Link to={`/manage_articles/${item.id}`}>Manage Articles</Link>
+                                <Link to={`/article_form/${item.id}`}>Edit Article</Link>
                             </td>
                             <td>
                                 <a onClick={() => this.props.deleteArticle(item.id)}>Delete</a>

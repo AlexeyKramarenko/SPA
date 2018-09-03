@@ -1,5 +1,5 @@
 
-import { SET_ARTICLES, SET_ARTICLE, ARTICLE_DELETED } from '../actions/articles';
+import { SET_ARTICLES, SET_ARTICLE, ARTICLE_DELETED, ARTICLE_ADDED, ARTICLE_UPDATED } from '../actions/articles';
 
 export default function articlesReducer(state = [], action = {}){
     
@@ -14,6 +14,11 @@ export default function articlesReducer(state = [], action = {}){
         case ARTICLE_DELETED: 
             return { ...state, articles: state.articles.filter(item => item.id !== action.payload) };
  
+        case ARTICLE_ADDED: 
+            return { ...state, articles: (state.articles || []).concat([action.payload]) };
+
+        case ARTICLE_UPDATED:
+            
         default:
             return state;        
     } 
