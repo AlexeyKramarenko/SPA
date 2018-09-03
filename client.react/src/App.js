@@ -47,19 +47,10 @@ class App extends Component {
               <nav className="main_menu">
                 <ul className="nav_ul">
                   <li className="">
-                    <a href="/">Главная</a>
+                    <Link to="/categories">User section</Link>
                   </li>
                   <li className="">
-                    <a href="/pay">Статьи</a>
-                  </li>
-                  <li className="">
-                    <a href="/about-us">Оплата</a>
-                  </li>
-                  <li className="">
-                    <a href="/about-us">Доставка</a>
-                  </li>
-                  <li className="">
-                    <a href="/about-us">Контакты</a>
+                    <Link to="/manage_categories">Administrator section</Link>
                   </li>
                 </ul>
               </nav>
@@ -81,24 +72,7 @@ class App extends Component {
               <div className="auth login_home">
                 <a href="https://bookinstein.com.ua/login/" rel="nofollow">вход</a> /
             <a href="https://bookinstein.com.ua/register/" rel="nofollow">регистрация</a>
-              </div>
-              <div className="category_block">
-                <div className="category_top"></div>
-                <div className="category_border">
-                  <ul>
-                    <li>
-                      <a href="https://bookinstein.com.ua/novinki/">Шали</a>
-                    </li>
-                    <li className="active">
-                      <a href="https://bookinstein.com.ua/coming-soon/">Вышиванки</a>
-                    </li>
-                    <li>
-                      <a href="https://bookinstein.com.ua/biznes-literatura/">Брошки</a>
-                    </li>
-                  </ul>
-                </div>
-                <div className="category_bottom"></div>
-              </div>
+              </div>             
             </aside>
             <div id="content">
               <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"

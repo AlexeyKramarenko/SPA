@@ -26,3 +26,10 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+ 
+table.list tr td{
+  border:1px solid black;
+  padding: 15px;
+}
+         
